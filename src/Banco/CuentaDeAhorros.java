@@ -30,7 +30,7 @@ public class CuentaDeAhorros extends Cuenta {
         this.mes = month;
         this.año = year;
     }
-   
+        
     @Override
     public void crearCuenta(){
 
@@ -49,7 +49,8 @@ public class CuentaDeAhorros extends Cuenta {
     
     @Override
     public void consultarDatos(){
-        System.out.println("Ingrese el Numero de Cuenta");
+        System.out.println("-----------------\nCONSULTA DE DATOS\n------------------\n"
+                            + "Ingrese el Numero de Cuenta:");
         numCuenta = noCuenta.nextInt();
         
         CuentaDeAhorros consulta = cuentasAhorro.get(numCuenta);
@@ -60,13 +61,15 @@ public class CuentaDeAhorros extends Cuenta {
             System.out.println("Numero de Cuenta: " + consulta.getNumCuenta());
             System.out.println("Saldo Disponible: " +  consulta.getSaldoCliente());
             System.out.println("Fecha de vencimiento (DD/MM/AA): " + consulta.dia +  "/" + consulta.mes + "/" + consulta.año + 
-                                "\n¡¡Sólo Puede Retirar en esta Fecha!!");
+                                "\n¡¡Sólo es posible Retirar en esta Fecha!!");
         }
     }                                                     
     
     @Override
     public void depositar(){
-
+        System.out.println("-----------------\nDEPOSITO DE DINERO\n-----------------\n" 
+                            + "Ingrese el numero de Cuenta");
+        
     }
     
     @Override
