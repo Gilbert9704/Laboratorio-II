@@ -15,6 +15,10 @@ public abstract class Cuenta {
     protected int numCuenta;
     protected double saldoCliente;
     
+    Scanner nombre = new Scanner(System.in);
+    Scanner noCuenta = new Scanner(System.in);
+    Scanner saldo = new Scanner(System.in);
+    
     public Cuenta(String nombreCliente, int numCuenta, double saldoCliente) {
         this.nombreCliente = nombreCliente;
         this.numCuenta = numCuenta;
@@ -46,9 +50,7 @@ public abstract class Cuenta {
     }
      
     public void crearCuenta(){
-        Scanner nombre = new Scanner(System.in);
-        Scanner noCuenta = new Scanner(System.in);
-        Scanner saldo = new Scanner(System.in);
+
         
         System.out.println("--------------\nCREAR CUENTA\n--------------");
         System.out.println("Ingrese el Número de Cuenta:");
