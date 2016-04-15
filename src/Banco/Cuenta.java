@@ -50,7 +50,6 @@ public abstract class Cuenta {
     }
      
     public void crearCuenta(){
-
         
         System.out.println("--------------\nCREAR CUENTA\n--------------");
         System.out.println("Ingrese el Número de Cuenta:");
@@ -59,6 +58,7 @@ public abstract class Cuenta {
         nombreCliente = nombre.nextLine();
         System.out.println("Ingrese el Saldo del Cliente");
         saldoCliente = saldo.nextDouble();
+        
     }
     
     public abstract void consultarDatos();

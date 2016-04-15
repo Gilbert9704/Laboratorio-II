@@ -22,7 +22,7 @@ public class CuentaDeAhorros extends Cuenta {
     int year = fecha.get(Calendar.YEAR);
     
     HashMap <Integer, CuentaDeAhorros> cuentasAhorro = new HashMap <>();
-
+    //solo falta solucionar lo de las fechas
     public CuentaDeAhorros(String nombreCliente, int numCuenta, double saldoCliente, int dia, int mes, int año) {
         super(nombreCliente, numCuenta, saldoCliente);
         this.dia = day;
@@ -59,7 +59,7 @@ public class CuentaDeAhorros extends Cuenta {
         double interes;
         final int tiempo = 30;
         
-        //dia = 1;//El contador es para evitar que se sumen los intereses varias veces en el dia 1
+        //El contador es para evitar que se sumen los intereses varias veces en el dia 1
         if (dia == 1 && contador == 0){
             for(CuentaDeAhorros cuentas : cuentasAhorro.values()){
                 capital = cuentas.getSaldoCliente();
@@ -110,6 +110,9 @@ public class CuentaDeAhorros extends Cuenta {
             System.out.println("Saldo Disponible: " +  consulta.getSaldoCliente());
             System.out.println("Fecha de vencimiento (DD/MM/AA): " + consulta.getDia() +  "/" + consulta.getMes() + "/" + consulta.getAño() + 
                                 "\n¡¡Sólo es posible Retirar en esta Fecha!!");
+        }
+        else {
+            System.out.println("Numero de Cuenta Invalido: " + numCuenta);
         }
     }                                                     
     
