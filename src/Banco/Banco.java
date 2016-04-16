@@ -18,7 +18,7 @@ public class Banco {
         
         String nombre = null;
         byte comando = 0;
-        byte comandoPrinc = 0;
+        byte comandoPrinc;
         int cuenta = 0;
         int dia = 0, mes = 0, año = 0;
         double saldo = 0;

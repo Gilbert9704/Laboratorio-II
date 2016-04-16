@@ -137,7 +137,10 @@ public class CuentaDeAhorros extends Cuenta {
             System.out.println("Saldo Total Disponible: " + deposito.getSaldoCliente());
             System.out.println("Fecha de Vencimiento: " + deposito.getDia() + "/" + (deposito.getMes()+2) + "/" + deposito.getAño() +
                                 "\n(Recuerde que solo es posible efectuar retiros el dia de la fecha de vencimiento)\n");
-        } 
+        }
+        else{ 
+            System.out.println("El numero de cuenta: " + numCuenta + " no fué encontrado");
+        }
     }
     
     @Override
@@ -175,6 +178,9 @@ public class CuentaDeAhorros extends Cuenta {
             else{
                 System.out.println("La fecha de vencimiento de su cuenta aún no se ha cumplido, solo es posible retirar en esta fecha");
             }
+        }
+        else{ 
+            System.out.println("El numero de cuenta: " + numCuenta + " no fué encontrado");
         }
     }
 }

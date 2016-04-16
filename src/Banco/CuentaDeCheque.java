@@ -70,6 +70,9 @@ public class CuentaDeCheque extends Cuenta {
             System.out.println("Nombre del Propietario: " + deposito.getNombreCliente());
             System.out.println("Saldo Total Disponible: " + deposito.getSaldoCliente());
         }
+        else{ 
+            System.out.println("El numero de cuenta: " + numCuenta + " no fué encontrado");
+        }
     }
     
     @Override
@@ -109,6 +112,9 @@ public class CuentaDeCheque extends Cuenta {
                 System.out.println("Saldo Total Disponible: " + retiro.getSaldoCliente());
                 System.out.println("Costo comisión: " + comisionUsoCheq + "\n");
             }
+        }
+        else{ 
+            System.out.println("El numero de cuenta: " + numCuenta + " no fué encontrado");
         }        
     }
 }

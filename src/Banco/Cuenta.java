@@ -54,7 +54,7 @@ public abstract class Cuenta {
         System.out.println("--------------\nCREAR CUENTA\n--------------");
         System.out.println("Ingrese el Número de Cuenta:");
         numCuenta = noCuenta.nextInt();
-        System.out.println("Ingrese el Nombre de quien será propietario:");
+        System.out.println("Ingrese el Nombre de quien será Titular:");
         nombreCliente = nombre.nextLine();
         System.out.println("Ingrese el Saldo del Cliente");
         saldoCliente = saldo.nextDouble();
