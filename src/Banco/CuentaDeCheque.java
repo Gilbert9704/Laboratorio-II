@@ -105,7 +105,7 @@ public class CuentaDeCheque extends Cuenta {
                 saldoCliente -= comisionUsoCheq;//Cobro de comision por uso de chequera
                 retiro.setSaldoCliente(saldoCliente);
                 
-                System.out.println("-----------------\nTRANSACCION EXITOSA\n-----------------");
+                System.out.println("-------------------\nTRANSACCION EXITOSA\n-------------------");
                 System.out.println("Numero de Cuenta: " + retiro.getNumCuenta());
                 System.out.println("Nombre del Propietario: " + retiro.getNombreCliente());
                 System.out.println("Cantidad retirada: " + cantSolctd);
