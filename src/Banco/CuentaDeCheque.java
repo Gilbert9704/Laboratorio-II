@@ -11,8 +11,8 @@ import java.util.*;
  * @author User
  */
 public class CuentaDeCheque extends Cuenta {
-    
-    HashMap <Integer, CuentaDeCheque> cuentasCheque = new HashMap<>();
+    //si error quitar final
+    private final HashMap <Integer, CuentaDeCheque> cuentasCheque = new HashMap<>();
     
     public CuentaDeCheque(String nombreCliente, int numCuenta, double saldoCliente) {
         super(nombreCliente, numCuenta, saldoCliente);
