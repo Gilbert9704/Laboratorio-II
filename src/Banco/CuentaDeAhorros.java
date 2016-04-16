@@ -16,13 +16,14 @@ public class CuentaDeAhorros extends Cuenta {
     private short contador = 0;
     private int dia, mes, año;
     private final double porcIntrs = 10;
+    //GregorianCalendar calendario = new GregorianCalendar();
     Calendar fecha = Calendar.getInstance();
     int day = fecha.get(Calendar.DAY_OF_MONTH);
     int month = fecha.get(Calendar.MONTH);
     int year = fecha.get(Calendar.YEAR);
     
     HashMap <Integer, CuentaDeAhorros> cuentasAhorro = new HashMap <>();
-    //solo falta solucionar lo de las fechas
+
     public CuentaDeAhorros(String nombreCliente, int numCuenta, double saldoCliente, int dia, int mes, int año) {
         super(nombreCliente, numCuenta, saldoCliente);
         this.dia = day;
@@ -55,7 +56,7 @@ public class CuentaDeAhorros extends Cuenta {
     }
     
     public void depositarIntereses(){
-        double capital = 0;
+        double capital;
         double interes;
         final int tiempo = 30;
         
@@ -77,8 +78,7 @@ public class CuentaDeAhorros extends Cuenta {
     public void crearCuenta(){
         super.crearCuenta();
         //Para la fecha de vencimiento
-        mes = month;
-        mes += 2;
+        mes = month + 2;
         System.out.println("Fecha de Vencimiento de la Cuenta(DD/MM/AA): " + dia + "/" + mes + "/" + año);
         setDia(dia);
         setMes(mes);
@@ -88,9 +88,8 @@ public class CuentaDeAhorros extends Cuenta {
             System.out.println("Este numero de cuenta " + numCuenta + " ya existe, intente nuevamnete");
         }
         else{
-            cuentasAhorro.put(numCuenta, new CuentaDeAhorros(nombreCliente, numCuenta, saldoCliente, dia, mes,año));
+            cuentasAhorro.put(numCuenta, new CuentaDeAhorros(nombreCliente, numCuenta, saldoCliente, dia, mes, año));
         }
-        
         System.out.println("------------------\nOPERACION EXITOSA\n------------------\n");
     }
     
@@ -108,11 +107,11 @@ public class CuentaDeAhorros extends Cuenta {
             System.out.println("Nombre del Propietario: " + consulta.getNombreCliente());
             System.out.println("Numero de Cuenta: " + consulta.getNumCuenta());
             System.out.println("Saldo Disponible: " +  consulta.getSaldoCliente());
-            System.out.println("Fecha de vencimiento (DD/MM/AA): " + consulta.getDia() +  "/" + consulta.getMes() + "/" + consulta.getAño() + 
+            System.out.println("Fecha de vencimiento (DD/MM/AA): " + consulta.getDia() +  "/" + (consulta.getMes()+2) + "/" + consulta.getAño() + 
                                 "\n¡¡Sólo es posible Retirar en esta Fecha!!");
         }
-        else {
-            System.out.println("Numero de Cuenta Invalido: " + numCuenta);
+        else{ 
+            System.out.println("El numero de cuenta: " + numCuenta + " no fué encontrado");
         }
     }                                                     
     
@@ -136,7 +135,7 @@ public class CuentaDeAhorros extends Cuenta {
             System.out.println("Numero de Cuenta: " + deposito.getNumCuenta());
             System.out.println("Nombre del Propietario: " + deposito.getNombreCliente());
             System.out.println("Saldo Total Disponible: " + deposito.getSaldoCliente());
-            System.out.println("Fecha de Vencimiento: " + deposito.dia + "/" + deposito.mes + "/" + deposito.año +
+            System.out.println("Fecha de Vencimiento: " + deposito.getDia() + "/" + (deposito.getMes()+2) + "/" + deposito.getAño() +
                                 "\n(Recuerde que solo es posible efectuar retiros el dia de la fecha de vencimiento)\n");
         } 
     }
@@ -156,18 +155,21 @@ public class CuentaDeAhorros extends Cuenta {
             saldoCliente = retiro.getSaldoCliente();
             
             if (saldoCliente < cantSolctd){
+                System.out.println("-----------------\nTRANSACCION DECLINADA\n-----------------");
                 System.out.println("¡¡ERROR!! FONDOS INSUFICIENTES");
             }
-            else if (saldoCliente >= cantSolctd && dia == day && mes == month && año == year){ 
+            else if (saldoCliente >= cantSolctd && dia == day && (mes) == month && año == year){ 
                 saldoCliente -= cantSolctd;
                 retiro.setSaldoCliente(saldoCliente);
-                //Aqui se deberia aumentar el mes en 1, para renovar la fecha de vencimiento al siguente mes
+                mes += 1;
+                retiro.setMes(mes);
                 
                 System.out.println("-----------------\nTRANSACCION EXITOSA\n-----------------");
                 System.out.println("Numero de Cuenta: " + retiro.getNumCuenta());
                 System.out.println("Nombre del Propietario: " + retiro.getNombreCliente());
+                System.out.println("Cantidad solicitada:" + cantSolctd);
                 System.out.println("Saldo Total Disponible: " + retiro.getSaldoCliente());
-                System.out.println("Fecha de Vencimiento: " + retiro.dia + "/" + retiro.mes + "/" + retiro.año +
+                System.out.println("Proxima Fecha de Vencimiento: " + retiro.getDia() + "/" + retiro.getMes() + "/" + retiro.getAño() +
                                     "\n(Recuerde que solo es posible efectuar retiros el dia de la fecha de vencimiento)\n"); 
             }
             else{

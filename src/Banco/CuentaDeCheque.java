@@ -12,19 +12,12 @@ import java.util.*;
  */
 public class CuentaDeCheque extends Cuenta {
     
-    HashMap<Integer, CuentaDeCheque> cuentasCheque = new HashMap<>();
+    HashMap <Integer, CuentaDeCheque> cuentasCheque = new HashMap<>();
     
     public CuentaDeCheque(String nombreCliente, int numCuenta, double saldoCliente) {
         super(nombreCliente, numCuenta, saldoCliente);
     }
     
-    public void comsnUsoCheq(){
-
-    }
-    
-    public void comsCheqSldInsfc(){
-        
-    }
     @Override
     public void crearCuenta(){
         super.crearCuenta();
@@ -34,13 +27,12 @@ public class CuentaDeCheque extends Cuenta {
         else{
             cuentasCheque.put(numCuenta, new CuentaDeCheque(nombreCliente, numCuenta, saldoCliente));
         }
-        
         System.out.println("------------------\nOPERACION EXITOSA\n------------------\n");
     }
     
     @Override
     public void consultarDatos(){
-                System.out.println("-----------------\nCONSULTA DE DATOS\n------------------\n"
+        System.out.println("-----------------\nCONSULTA DE DATOS\n------------------\n"
                             + "Ingrese el Numero de Cuenta:");
         numCuenta = noCuenta.nextInt();
         
@@ -90,29 +82,33 @@ public class CuentaDeCheque extends Cuenta {
         numCuenta = noCuenta.nextInt();
         
         CuentaDeCheque retiro = cuentasCheque.get(numCuenta);//Esta coleccion es la que me impide poder 
-                                                              //usar codigo generico ya difiere para cuentas 
+                                                              //usar codigo generico ya que difiere para cuentas 
         if (retiro != null){                                  //de ahorros y de cheques
             System.out.println("Ingrese la cantidad que desea retirar: ");
             cantSolctd = saldo.nextDouble();
             saldoCliente = retiro.getSaldoCliente();
             
             if (saldoCliente < cantSolctd){
+                System.out.println("-----------------\nTRANSACCION DECLINADA\n-----------------");
                 System.out.println("¡¡ERROR!! FONDOS INSUFICIENTES");
+                //Cobro de comision por uso de chequera con saldo Insuficiente
                 saldoCliente -= comisionSaldInsft;
                 retiro.setSaldoCliente(saldoCliente);
+                System.out.println("Saldo Disponible: " +  retiro.getSaldoCliente());
                 System.out.println("Costo Comisión: " + comisionSaldInsft);
             }
             else if (saldoCliente >= cantSolctd){ 
                 saldoCliente -= cantSolctd;
-                saldoCliente -= comisionUsoCheq;
+                saldoCliente -= comisionUsoCheq;//Cobro de comision por uso de chequera
                 retiro.setSaldoCliente(saldoCliente);
                 
                 System.out.println("-----------------\nTRANSACCION EXITOSA\n-----------------");
                 System.out.println("Numero de Cuenta: " + retiro.getNumCuenta());
                 System.out.println("Nombre del Propietario: " + retiro.getNombreCliente());
+                System.out.println("Cantidad retirada: " + cantSolctd);
                 System.out.println("Saldo Total Disponible: " + retiro.getSaldoCliente());
                 System.out.println("Costo comisión: " + comisionUsoCheq + "\n");
             }
-        }
+        }        
     }
 }
