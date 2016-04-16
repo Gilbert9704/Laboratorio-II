@@ -7,9 +7,16 @@ package Banco;
 
 import java.util.*;
 /**
- *
- * @author User
+ *<h1> Algoritmo Banco </h1>
+ * Este algoritmo, permite crear una cantidad ilimitada de cuentas tanto de Ahorros como de Cheque,
+ * permite la consulta de datos, el deposito y el retiro de dinero.
+ * 
+ * @author Camilo Molina, Jose Celis, Gilbert Angulo
+ * @version 1.0
+ * @since 16/04/2016
+ * 
  */
+
 public class CuentaDeCheque extends Cuenta {
     
     private final HashMap <Integer, CuentaDeCheque> cuentasCheque = new HashMap<>();

@@ -6,9 +6,16 @@
 package Juego;
 
 /**
- *
- * @author User
+ *<h1> Juego de Computadora </h1>
+ * Este algoritmo, permite asignarle valores determinados a los atributos de los objetos
+ * tipo marciano y jupiteriano.
+ * 
+ * @author Camilo Molina, Jose Celis, Gilbert Angulo
+ * @version 1.0
+ * @since 10/04/2016
+ * 
  */
+
 public class Marte extends Alien {
 
     public Marte(String tipoDeAlien, String color, int numOjos, int numExtremidades, int numVidas) {
