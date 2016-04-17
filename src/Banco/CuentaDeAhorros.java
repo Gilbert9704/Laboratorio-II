@@ -85,7 +85,7 @@ public class CuentaDeAhorros extends Cuenta {
         super.crearCuenta();
         //Para la fecha de vencimiento
         mes = month + 2;
-        System.out.println("Fecha de Vencimiento de la Cuenta(DD/MM/AA): " + dia + "/" + mes + "/" + año);
+        System.out.println("Fecha de Vencimiento de la Cuenta(DD/MM/AAAA): " + dia + "/" + mes + "/" + año);
         setDia(dia);
         setMes(mes);
         setAño(año);
@@ -113,7 +113,7 @@ public class CuentaDeAhorros extends Cuenta {
             System.out.println("Nombre del Propietario: " + consulta.getNombreCliente());
             System.out.println("Numero de Cuenta: " + consulta.getNumCuenta());
             System.out.println("Saldo Disponible: " +  consulta.getSaldoCliente());
-            System.out.println("Fecha de vencimiento (DD/MM/AA): " + consulta.getDia() +  "/" + (consulta.getMes()+2) + "/" + consulta.getAño() + 
+            System.out.println("Fecha de vencimiento (DD/MM/AAAA): " + consulta.getDia() +  "/" + (consulta.getMes()+2) + "/" + consulta.getAño() + 
                                 "\n¡¡Sólo es posible Retirar en esta Fecha!!");
         }
         else{ 

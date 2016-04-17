@@ -45,7 +45,7 @@ public class Banco {
                 
                 switch(comandoPrinc){
                     case 1://Crear Cuenta
-                        System.out.println("¿Qué tipo de Cuenta?\n 1-Ahorros\n 2-Cheque");
+                        System.out.println("¿Qué tipo de Cuenta?\n 1-Ahorros\n 2-Cheque\n 0-Regresar");
                         comando = accion.nextByte();
                             if (comando == 1){
                                 cda.crearCuenta();
@@ -56,7 +56,7 @@ public class Banco {
                         break;
                             
                     case 2://Consultar Datos
-                        System.out.println("¿Qué tipo de Cuenta?\n 1-Ahorros\n 2-Cheque");
+                        System.out.println("¿Qué tipo de Cuenta?\n 1-Ahorros\n 2-Cheque\n 0-Regresar");
                         comando = accion.nextByte();
                             if (comando == 1){
                                 cda.consultarDatos();
@@ -67,7 +67,7 @@ public class Banco {
                         break;
                     
                     case 3://Depositar
-                        System.out.println("¿Qué tipo de Cuenta?\n 1-Ahorros\n 2-Cheque");
+                        System.out.println("¿Qué tipo de Cuenta?\n 1-Ahorros\n 2-Cheque\n 0-Regresar");
                         comando = accion.nextByte();
                             if (comando == 1){
                                 cda.depositar();
@@ -78,7 +78,7 @@ public class Banco {
                         break;
                     
                     case 4://Retirar
-                        System.out.println("¿Qué tipo de Cuenta?\n 1-Ahorros\n 2-Cheque");
+                        System.out.println("¿Qué tipo de Cuenta?\n 1-Ahorros\n 2-Cheque\n 0-Regresar");
                         comando = accion.nextByte();
                             if (comando == 1){
                                 cda.retirar();
