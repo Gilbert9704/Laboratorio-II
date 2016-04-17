@@ -30,11 +30,13 @@ public class CuentaDeCheque extends Cuenta {
         super.crearCuenta();
         if (cuentasCheque.containsKey(numCuenta)){
             System.out.println("Este numero de cuenta " + numCuenta + " ya existe, intente nuevamnete");
+            System.out.println("-------------------\nOPERACION DECLINADA\n-------------------\n");
         }
         else{
             cuentasCheque.put(numCuenta, new CuentaDeCheque(nombreCliente, numCuenta, saldoCliente));
+            System.out.println("------------------\nOPERACION EXITOSA\n------------------\n");
         }
-        System.out.println("------------------\nOPERACION EXITOSA\n------------------\n");
+        
     }
     
     @Override

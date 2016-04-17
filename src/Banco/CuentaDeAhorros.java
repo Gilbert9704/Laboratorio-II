@@ -84,19 +84,20 @@ public class CuentaDeAhorros extends Cuenta {
     public void crearCuenta(){
         super.crearCuenta();
         //Para la fecha de vencimiento
-        mes = month + 2;
-        System.out.println("Fecha de Vencimiento de la Cuenta(DD/MM/AAAA): " + dia + "/" + mes + "/" + año);
-        setDia(dia);
-        setMes(mes);
-        setAño(año);
-        
         if (cuentasAhorro.containsKey(numCuenta)){
             System.out.println("Este numero de cuenta " + numCuenta + " ya existe, intente nuevamnete");
+            System.out.println("-------------------\nOPERACION DECLINADA\n-------------------\n");
         }
         else{
+            mes = month + 2;
+            System.out.println("Fecha de Vencimiento de la Cuenta(DD/MM/AAAA): " + dia + "/" + mes + "/" + año);
+            setDia(dia);
+            setMes(mes);
+            setAño(año);
             cuentasAhorro.put(numCuenta, new CuentaDeAhorros(nombreCliente, numCuenta, saldoCliente, dia, mes, año));
+            System.out.println("------------------\nOPERACION EXITOSA\n------------------\n");
         }
-        System.out.println("------------------\nOPERACION EXITOSA\n------------------\n");
+        
     }
     
     @Override
