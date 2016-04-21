@@ -22,7 +22,6 @@ public class CuentaDeAhorros extends Cuenta {
     private short contador = 0;
     private int dia, mes, año;
     private final double porcIntrs = 10;
-    //GregorianCalendar calendario = new GregorianCalendar();
     Calendar fecha = Calendar.getInstance();
     int day = fecha.get(Calendar.DAY_OF_MONTH);
     int month = fecha.get(Calendar.MONTH);
@@ -83,21 +82,21 @@ public class CuentaDeAhorros extends Cuenta {
     @Override
     public void crearCuenta(){
         super.crearCuenta();
-        //Para la fecha de vencimiento
+        
         if (cuentasAhorro.containsKey(numCuenta)){
             System.out.println("Este numero de cuenta " + numCuenta + " ya existe, intente nuevamnete");
             System.out.println("-------------------\nOPERACION DECLINADA\n-------------------\n");
         }
-        else{
+        else{//Para la fecha de vencimiento
             mes = month + 2;
             System.out.println("Fecha de Vencimiento de la Cuenta(DD/MM/AAAA): " + dia + "/" + mes + "/" + año);
             setDia(dia);
             setMes(mes);
             setAño(año);
+            //Almacenar datos en el HashMap
             cuentasAhorro.put(numCuenta, new CuentaDeAhorros(nombreCliente, numCuenta, saldoCliente, dia, mes, año));
             System.out.println("------------------\nOPERACION EXITOSA\n------------------\n");
-        }
-        
+        }  
     }
     
     @Override
@@ -107,8 +106,8 @@ public class CuentaDeAhorros extends Cuenta {
                             + "Ingrese el Numero de Cuenta:");
         numCuenta = noCuenta.nextInt();
         
-        CuentaDeAhorros consulta = cuentasAhorro.get(numCuenta);
-        
+        CuentaDeAhorros consulta = cuentasAhorro.get(numCuenta);//La coleccion me impide realizar algun codigo generico
+                                                                //En consulta de datos
         if (consulta != null){
             System.out.println("-------------------\nDATOS DE LA CUENTA\n-------------------");
             System.out.println("Nombre del Propietario: " + consulta.getNombreCliente());
@@ -129,7 +128,7 @@ public class CuentaDeAhorros extends Cuenta {
                             + "Ingrese el numero de Cuenta");
         numCuenta = noCuenta.nextInt();
         
-        CuentaDeAhorros deposito = cuentasAhorro.get(numCuenta);
+        CuentaDeAhorros deposito = cuentasAhorro.get(numCuenta);//Idem
         
         if (deposito != null){
             System.out.println("Ingrese la cantidad que sea depositar: ");
@@ -157,9 +156,9 @@ public class CuentaDeAhorros extends Cuenta {
                             + "Ingrese el numero de cuenta: ");
         numCuenta = noCuenta.nextInt();
         
-        CuentaDeAhorros retiro = cuentasAhorro.get(numCuenta);//Esta coleccion es la que me impide poder 
-                                                              //usar codigo generico ya difiere para cuentas 
-        if (retiro != null){                                  //de ahorros y de cheques
+        CuentaDeAhorros retiro = cuentasAhorro.get(numCuenta);//Idem
+                                                               
+        if (retiro != null){                                  
             System.out.println("Ingrese la cantidad que desea retirar: ");
             cantSolctd = saldo.nextDouble();
             saldoCliente = retiro.getSaldoCliente();
@@ -168,10 +167,10 @@ public class CuentaDeAhorros extends Cuenta {
                 System.out.println("-----------------\nTRANSACCION DECLINADA\n-----------------");
                 System.out.println("¡¡ERROR!! FONDOS INSUFICIENTES");
             }
-            else if (saldoCliente >= cantSolctd && dia == day && (mes) == month && año == year){ 
-                saldoCliente -= cantSolctd;
+            else if (saldoCliente >= cantSolctd && dia == day && mes == month && año == year){
+                saldoCliente -= cantSolctd;         //Se revisa si la fecha guardada corresponde a la actual
                 retiro.setSaldoCliente(saldoCliente);
-                mes += 1;
+                mes += 1;//Actualiza la fecha de vencimiento para el mes siguiente
                 retiro.setMes(mes);
                 
                 System.out.println("-----------------\nTRANSACCION EXITOSA\n-----------------");

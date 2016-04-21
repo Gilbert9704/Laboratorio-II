@@ -45,8 +45,8 @@ public class CuentaDeCheque extends Cuenta {
                             + "Ingrese el Numero de Cuenta:");
         numCuenta = noCuenta.nextInt();
         
-        CuentaDeCheque consulta = cuentasCheque.get(numCuenta);
-        
+        CuentaDeCheque consulta = cuentasCheque.get(numCuenta);//La coleccion me impide realizar algun codigo generico
+                                                                //para la consulta de datos
         if (consulta != null){
             System.out.println("-------------------\nDATOS DE LA CUENTA\n-------------------");
             System.out.println("Nombre del Propietario: " + consulta.getNombreCliente());
@@ -65,7 +65,7 @@ public class CuentaDeCheque extends Cuenta {
                             + "Ingrese el numero de Cuenta");
         numCuenta = noCuenta.nextInt();
         
-        CuentaDeCheque deposito = cuentasCheque.get(numCuenta);
+        CuentaDeCheque deposito = cuentasCheque.get(numCuenta);//Idem
         
         if (deposito != null){
             System.out.println("Ingrese la cantidad que sea depositar: ");
@@ -93,9 +93,9 @@ public class CuentaDeCheque extends Cuenta {
                             + "Ingrese el numero de cuenta: ");
         numCuenta = noCuenta.nextInt();
         
-        CuentaDeCheque retiro = cuentasCheque.get(numCuenta);//Esta coleccion es la que me impide poder 
-                                                              //usar codigo generico ya que difiere para cuentas 
-        if (retiro != null){                                  //de ahorros y de cheques
+        CuentaDeCheque retiro = cuentasCheque.get(numCuenta);//idem 
+                                                               
+        if (retiro != null){                                 
             System.out.println("Ingrese la cantidad que desea retirar: ");
             cantSolctd = saldo.nextDouble();
             saldoCliente = retiro.getSaldoCliente();
